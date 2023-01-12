@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const companyRoute = require('./routes/companyRoute');
+const productRoute = require('./routes/productRoute');
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/companies', companyRoute);
+app.use('/products', productRoute);
 
 const port = 5000;
 

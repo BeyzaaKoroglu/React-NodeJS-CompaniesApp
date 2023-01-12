@@ -22,6 +22,12 @@ const CompanySchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  products: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Product',
+    },
+  ],
 });
 
 const Company = mongoose.model('Company', CompanySchema);

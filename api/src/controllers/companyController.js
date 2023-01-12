@@ -1,4 +1,5 @@
 const Company = require('../models/Company');
+const Product = require('../models/Product');
 
 exports.createCompany = async (req, res) => {
   try {
@@ -68,7 +69,11 @@ exports.updateCompany = async (req, res) => {
 };
 
 exports.deleteCompany = async (req, res) => {
-  await Company.findOneAndRemove({ _id: req.params.id });
+  await Company.findOneAndRemove({ _id: req.params.id }).then((company) =>
+    company.products.forEach(
+      async (productID) => await Product.findOneAndRemove({ _id: productID })
+    )
+  );
 
   try {
     res.status(200).json({
