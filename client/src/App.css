@@ -1,3 +1,18 @@
 .App {
   text-align: center;
 }
+
+.page {
+  width: 70%;
+  margin: auto;
+}
+
+.editBtn {
+  background-color: rgb(239, 173, 77);
+  border-color: rgb(179, 130, 58);
+}
+
+.deleteBtn {
+  background-color: rgb(217, 84, 79);
+  border-color: rgb(163, 63, 60);
+}
