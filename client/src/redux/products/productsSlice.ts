@@ -4,12 +4,17 @@ import { ProductsStateType, ProductType } from './types';
 
 const initialState: ProductsStateType = {
   allProducts: [],
+  editProduct: undefined,
 };
 
 export const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    handleEditProduct(state, action: PayloadAction<ProductType>) {
+      state.editProduct = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder.addCase(
       getAllProducts.fulfilled,
@@ -20,4 +25,5 @@ export const productsSlice = createSlice({
   },
 });
 
+export const { handleEditProduct } = productsSlice.actions;
 export default productsSlice.reducer;

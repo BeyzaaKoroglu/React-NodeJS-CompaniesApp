@@ -1,5 +1,6 @@
 export type CompaniesStateType = {
   allCompanies: Array<CompanyType>;
+  editCompany: CompanyType | undefined;
 };
 
 export type CompanyType = {

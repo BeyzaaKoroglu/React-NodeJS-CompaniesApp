@@ -4,12 +4,17 @@ import { CompaniesStateType, CompanyType } from './types';
 
 const initialState: CompaniesStateType = {
   allCompanies: [],
+  editCompany: undefined,
 };
 
 export const companiesSlice = createSlice({
   name: 'companies',
   initialState,
-  reducers: {},
+  reducers: {
+    handleEditCompany(state, action: PayloadAction<CompanyType>) {
+      state.editCompany = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder.addCase(
       getAllCompanies.fulfilled,
@@ -20,4 +25,5 @@ export const companiesSlice = createSlice({
   },
 });
 
+export const { handleEditCompany } = companiesSlice.actions;
 export default companiesSlice.reducer;

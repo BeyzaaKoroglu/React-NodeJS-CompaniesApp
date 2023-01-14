@@ -1,5 +1,6 @@
 import { handleModalType, handleShowModal } from '../../redux/modal/modalSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
+import ProductListItem from '../ProductListItem';
 import { Styled } from './ProductList.styled';
 
 const ProductList = () => {
@@ -28,19 +29,7 @@ const ProductList = () => {
           </b>
         </li>
         {allProducts.map((product, index) => (
-          <li key={index}>
-            <span>{product.name}</span>
-            <span>{product.category}</span>
-            <span>{product.amount}</span>
-            <span>{product.amountUnit}</span>
-            <span>{product.company.name}</span>
-            <span>
-              <button className="editBtn">Edit</button>
-            </span>
-            <span>
-              <button className="deleteBtn">Delete</button>
-            </span>
-          </li>
+          <ProductListItem key={index} product={product} />
         ))}
       </ul>
     </Styled>

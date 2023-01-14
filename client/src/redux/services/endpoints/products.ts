@@ -16,3 +16,17 @@ export const createProduct = createAsyncThunk(
     await instance.post(`/products`, product);
   }
 );
+
+export const updateProduct = createAsyncThunk(
+  'products/updateProduct',
+  async (product: ProductFormValues) => {
+    await instance.put(`/products/${product._id}`, product);
+  }
+);
+
+export const deleteProduct = createAsyncThunk(
+  'products/deleteProduct',
+  async (id: string) => {
+    await instance.delete(`/products/${id}`);
+  }
+);

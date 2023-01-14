@@ -2,6 +2,7 @@ import { CompanyType } from '../companies/types';
 
 export type ProductsStateType = {
   allProducts: Array<ProductType>;
+  editProduct: ProductType | undefined;
 };
 
 export type ProductType = {

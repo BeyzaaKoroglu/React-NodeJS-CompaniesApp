@@ -16,3 +16,17 @@ export const createCompany = createAsyncThunk(
     await instance.post(`/companies`, company);
   }
 );
+
+export const updateCompany = createAsyncThunk(
+  'companies/updateCompany',
+  async (company: CompanyFormValues) => {
+    await instance.put(`/companies/${company._id}`, company);
+  }
+);
+
+export const deleteCompany = createAsyncThunk(
+  'companies/deleteCompany',
+  async (id: string) => {
+    await instance.delete(`/companies/${id}`);
+  }
+);
