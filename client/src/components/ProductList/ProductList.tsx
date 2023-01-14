@@ -1,8 +1,15 @@
-import { useAppSelector } from '../../redux/store';
-import { Styled } from './Product.styled';
+import { handleModalType, handleShowModal } from '../../redux/modal/modalSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { Styled } from './ProductList.styled';
 
 const ProductList = () => {
   const allProducts = useAppSelector((state) => state.products.allProducts);
+  const dispatch = useAppDispatch();
+
+  const handleAddClick = () => {
+    dispatch(handleShowModal());
+    dispatch(handleModalType('addProduct'));
+  };
 
   return (
     <Styled>
@@ -13,9 +20,12 @@ const ProductList = () => {
           <b>Amount</b>
           <b>Amount Unit</b>
           <b>Company</b>
-
           <b></b>
-          <b></b>
+          <b>
+            <button className="addBtn" onClick={handleAddClick}>
+              Add New Product
+            </button>
+          </b>
         </li>
         {allProducts.map((product, index) => (
           <li key={index}>

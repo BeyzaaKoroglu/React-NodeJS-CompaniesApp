@@ -1,0 +1,122 @@
+import { ChangeEvent, useState } from 'react';
+import { handleShowModal } from '../../redux/modal/modalSlice';
+import {
+  createProduct,
+  getAllProducts,
+} from '../../redux/services/endpoints/products';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { ProductFormValues } from './ProductForm.types';
+
+const ProductForm = () => {
+  const allCompanies = useAppSelector((state) => state.companies.allCompanies);
+  const allProducts = useAppSelector((state) => state.products.allProducts);
+  const modalType = useAppSelector((state) => state.modal.modalType);
+  const dispatch = useAppDispatch();
+
+  const [formValues, setFormValues] = useState<ProductFormValues>({
+    name: '',
+    category: '',
+    amount: undefined,
+    amountUnit: '',
+    company: '',
+  });
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  };
+
+  const handleAddClick = () => {
+    if (
+      formValues.name === '' ||
+      formValues.amount === undefined ||
+      formValues.amountUnit === ''
+    )
+      alert(
+        `${formValues.name === '' ? 'Product name is required\n' : ''}${
+          formValues.amount === undefined ? 'Product amount is required\n' : ''
+        } ${
+          formValues.amountUnit === '' ? 'Product amount unit is required' : ''
+        }`
+      );
+    else {
+      if (allProducts.find((product) => product.name === formValues.name))
+        alert('The product already exists');
+      else {
+        dispatch(createProduct(formValues)).then(() =>
+          dispatch(getAllProducts())
+        );
+        dispatch(handleShowModal());
+      }
+    }
+  };
+
+  const handleCancelClick = () => {
+    dispatch(handleShowModal());
+  };
+
+  return (
+    <div>
+      {modalType === 'addProduct' ? (
+        <h2>Add New Product</h2>
+      ) : (
+        <h2>Edit Product</h2>
+      )}
+
+      <input
+        onChange={handleChange}
+        name="name"
+        value={formValues.name}
+        placeholder="Product Name"
+        type="Text"
+      />
+      <input
+        onChange={handleChange}
+        name="category"
+        value={formValues.category}
+        placeholder="Category"
+        type="Text"
+      />
+      <input
+        onChange={handleChange}
+        name="amount"
+        value={formValues.amount}
+        placeholder="Amount"
+        min={0}
+        type="Number"
+      />
+      <input
+        onChange={handleChange}
+        name="amountUnit"
+        value={formValues.amountUnit}
+        placeholder="Amount Unit"
+        type="Text"
+      />
+      <select value={formValues.company} onChange={handleChange} name="company">
+        <option value={''}>Choose Company</option>
+        {allCompanies.map((company, index) => (
+          <option value={company._id} key={index}>
+            {company.name}
+          </option>
+        ))}
+      </select>
+
+      {modalType === 'addProduct' ? (
+        <button onClick={handleAddClick} className="addBtn">
+          Add
+        </button>
+      ) : (
+        <button className="editBtn">
+          Edit
+        </button>
+      )}
+
+      <button onClick={handleCancelClick} className="cancelBtn">
+        Cancel
+      </button>
+    </div>
+  );
+};
+
+export default ProductForm;

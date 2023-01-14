@@ -17,13 +17,18 @@ export const Styled = styled.div`
           padding: 5px 15px;
           border-style: solid;
           border-radius: 20px;
-          color: rgb(25, 25, 25);
         }
       }
       b {
         width: 25%;
         padding: 10px;
         font-size: 18px;
+        button {
+          font-weight: bold;
+          padding: 7px;
+          border-style: solid;
+          border-radius: 20px;
+        }
       }
     }
   }

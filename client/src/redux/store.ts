@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import companiesSlice from './companies/companiesSlice';
+import modalSlice from './modal/modalSlice';
 import productsSlice from './products/productsSlice';
 
 export const store = configureStore({
   reducer: {
     companies: companiesSlice,
     products: productsSlice,
+    modal: modalSlice,
   },
 });
 
