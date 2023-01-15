@@ -5,6 +5,7 @@ import { ProductsStateType, ProductType } from './types';
 const initialState: ProductsStateType = {
   allProducts: [],
   editProduct: undefined,
+  searchKey: '',
 };
 
 export const productsSlice = createSlice({
@@ -13,6 +14,9 @@ export const productsSlice = createSlice({
   reducers: {
     handleEditProduct(state, action: PayloadAction<ProductType>) {
       state.editProduct = action.payload;
+    },
+    handleProductSearchKey(state, action: PayloadAction<string>) {
+      state.searchKey = action.payload;
     },
   },
   extraReducers(builder) {
@@ -25,5 +29,6 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { handleEditProduct } = productsSlice.actions;
+export const { handleEditProduct, handleProductSearchKey } =
+  productsSlice.actions;
 export default productsSlice.reducer;

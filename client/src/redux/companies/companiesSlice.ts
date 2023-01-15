@@ -5,6 +5,7 @@ import { CompaniesStateType, CompanyType } from './types';
 const initialState: CompaniesStateType = {
   allCompanies: [],
   editCompany: undefined,
+  searchKey: '',
 };
 
 export const companiesSlice = createSlice({
@@ -13,6 +14,9 @@ export const companiesSlice = createSlice({
   reducers: {
     handleEditCompany(state, action: PayloadAction<CompanyType>) {
       state.editCompany = action.payload;
+    },
+    handleCompanySearchKey(state, action: PayloadAction<string>) {
+      state.searchKey = action.payload;
     },
   },
   extraReducers(builder) {
@@ -25,5 +29,6 @@ export const companiesSlice = createSlice({
   },
 });
 
-export const { handleEditCompany } = companiesSlice.actions;
+export const { handleEditCompany, handleCompanySearchKey } =
+  companiesSlice.actions;
 export default companiesSlice.reducer;

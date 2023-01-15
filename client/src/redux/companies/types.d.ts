@@ -1,6 +1,7 @@
 export type CompaniesStateType = {
   allCompanies: Array<CompanyType>;
   editCompany: CompanyType | undefined;
+  searchKey: string;
 };
 
 export type CompanyType = {
