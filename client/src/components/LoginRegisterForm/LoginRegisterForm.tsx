@@ -20,9 +20,21 @@ const LoginRegisterForm: FC<LoginRegisterProps> = ({ type }) => {
   };
 
   const handleRegisterClick = () => {
-    dispatch(register(formValues)).then(() => {
-      navigate('/login');
-    });
+    if (
+      formValues.name === '' ||
+      formValues.email === '' ||
+      formValues.password === ''
+    )
+      alert(
+        `${formValues.name === '' ? 'User name is required\n' : ''}${
+          formValues.email === '' ? 'E-mail is required\n' : ''
+        }${formValues.password === '' ? 'Password is required' : ''}`
+      );
+    else {
+      dispatch(register(formValues)).then(() => {
+        navigate('/login');
+      });
+    }
   };
 
   const handleLoginClick = () => {

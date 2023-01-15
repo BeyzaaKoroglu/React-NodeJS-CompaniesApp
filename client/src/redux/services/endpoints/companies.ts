@@ -6,7 +6,6 @@ export const getAllCompanies = createAsyncThunk(
   'companies/getAllCompanies',
   async () => {
     const res = await instance.get('/companies');
-    console.log(res.data.companies.sort());
 
     return res.data.companies.sort((a: any, b: any) =>
       b.createdAt > a.createdAt ? 1 : a.createdAt > b.createdAt ? -1 : 0
