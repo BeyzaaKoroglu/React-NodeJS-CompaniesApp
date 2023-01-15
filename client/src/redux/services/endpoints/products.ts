@@ -6,7 +6,9 @@ export const getAllProducts = createAsyncThunk(
   'products/getAllProducts',
   async () => {
     const res = await instance.get('/products');
-    return res.data.products;
+    return res.data.products.sort((a: any, b: any) =>
+      b.createdAt > a.createdAt ? 1 : a.createdAt > b.createdAt ? -1 : 0
+    );
   }
 );
 

@@ -35,11 +35,5 @@ export const Styled = styled.div`
     font-weight: bold;
     font-size: 18px;
     margin: 25px 15px;
-    &.linkBtn {
-      border: none;
-      background-color: transparent;
-      color: rgb(76, 113, 255);
-      text-decoration-line: underline;
-    }
   }
 `;
