@@ -6,7 +6,7 @@ export const Styled = styled.div`
   display: flex;
   justify-content: space-between;
   div {
-    width: 350px;
+    width: 500px;
     margin: 0 50px;
     a {
       h2 {
@@ -20,7 +20,7 @@ export const Styled = styled.div`
       a {
         h3 {
           float: left;
-          width: 30%;
+          width: 20%;
           border-color: black;
           margin-left: 2px;
           color: white;
@@ -28,6 +28,16 @@ export const Styled = styled.div`
             text-decoration-line: underline;
           }
         }
+      }
+      button {
+        width: 25%;
+        border-radius: 25px;
+        font-weight: bold;
+        font-size: 18px;
+        margin: 15px 15px;
+        background-color: transparent;
+        border: 2px solid white;
+        color: white;
       }
     }
   }

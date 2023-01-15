@@ -1,6 +1,16 @@
+import { logout } from '../../redux/services/endpoints/users';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { Styled } from './Header.styled';
 
 const Header = () => {
+  const userName = useAppSelector((state) => state.user.user.name);
+
+  const dispatch = useAppDispatch();
+
+  const handleLogoutClick = () => {
+    dispatch(logout());
+  };
+
   return (
     <Styled>
       <div>
@@ -29,6 +39,9 @@ const Header = () => {
           >
             Products
           </h3>
+        </a>
+        <a href="/">
+          <button onClick={handleLogoutClick}>{userName} Logout</button>
         </a>
       </div>
     </Styled>
