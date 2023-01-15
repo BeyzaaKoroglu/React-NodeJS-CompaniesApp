@@ -28,11 +28,11 @@ const CompanySummary = () => {
           <div key={index}>
             <h3>{company.name}</h3>
             <p>
-              <b>Company Phone: </b>
+              <b>Phone: </b>
               {company.phone}
             </p>
             <p>
-              <b>Incorporation Country: </b>
+              <b>Country: </b>
               {company.country}
             </p>
             <p>

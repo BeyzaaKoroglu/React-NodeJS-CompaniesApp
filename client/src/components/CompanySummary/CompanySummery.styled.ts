@@ -27,4 +27,17 @@ export const Styled = styled.div`
       }
     }
   }
+
+  @media (max-width: 540px) {
+    div {
+      &.companies {
+        display: flex;
+        flex-wrap: wrap;
+        div {
+          width: 60%;
+          margin: 15px auto;
+        }
+      }
+    }
+  }
 `;

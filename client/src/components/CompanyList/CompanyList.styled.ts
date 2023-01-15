@@ -22,4 +22,19 @@ export const Styled = styled.div`
       }
     }
   }
+
+  @media (max-width: 540px) {
+    ul {
+      li {
+        b {
+          width: 15%;
+          font-size: 14px;
+          button {
+            margin-left: -75px;
+            width: 200%;
+          }
+        }
+      }
+    }
+  }
 `;

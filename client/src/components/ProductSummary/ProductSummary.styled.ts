@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Styled = styled.div`
+  margin-top: 50px;
   div {
     h2 {
       padding: 10px;
@@ -23,6 +24,19 @@ export const Styled = styled.div`
         p {
           text-align: left;
           padding-left: 15px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 540px) {
+    div {
+      &.products {
+        display: flex;
+        flex-wrap: wrap;
+        div {
+          width: 60%;
+          margin: 15px auto;
         }
       }
     }

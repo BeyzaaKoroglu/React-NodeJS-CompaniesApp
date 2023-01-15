@@ -11,4 +11,11 @@ export const Styled = styled.li`
       border-radius: 20px;
     }
   }
+
+  @media (max-width: 540px) {
+    span {
+      width: 15%;
+      font-size: 14px;
+    }
+  }
 `;

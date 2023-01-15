@@ -28,16 +28,71 @@ export const Styled = styled.div`
             text-decoration-line: underline;
           }
         }
+        button {
+          width: 25%;
+          border-radius: 25px;
+          font-weight: bold;
+          font-size: 18px;
+          margin: 15px 15px;
+          background-color: transparent;
+          border: 2px solid white;
+          color: white;
+        }
       }
-      button {
-        width: 25%;
-        border-radius: 25px;
-        font-weight: bold;
-        font-size: 18px;
-        margin: 15px 15px;
-        background-color: transparent;
-        border: 2px solid white;
-        color: white;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    div {
+      &.navigation {
+        width: 900px;
+        a {
+          h3 {
+            width: 23%;
+          }
+          button {
+            width: 20%;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 820px) {
+    div {
+      a {
+        h2 {
+          font-size: 20px;
+        }
+      }
+      &.navigation {
+        a {
+          h3 {
+            width: 23%;
+            font-size: 16px;
+          }
+          button {
+            width: 20%;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 540px) {
+    display: block;
+    padding: 0;
+    div {
+      margin: 0;
+      a {
+        h2 {
+          margin: 0;
+          width: 100%;
+        }
+      }
+      &.navigation {
+        width: 100%;
       }
     }
   }
